@@ -9,9 +9,10 @@
   "scripts": {
     "dev": "next dev",
     "dev:d": "rm -rf .next && next dev",
-    "build": "next build",
+    "build": "next build && node scripts/copy-blog-assets.mjs",
     "build:d": "rm -rf .next && next build",
     "start": "next start",
+    "start:export": "npx serve@latest out",
     "lint": "next lint"
   },
   "dependencies": {
