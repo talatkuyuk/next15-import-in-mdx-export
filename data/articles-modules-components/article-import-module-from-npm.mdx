@@ -1,0 +1,23 @@
+---
+title: "Import a module from npm, node_modules"
+author: "ipikuka"
+date: Mar 08, 2025
+isDraft: true
+---
+
+# {frontmatter.title}
+
+<Link href={"/articles-modules-components"}>🔙</Link>
+_Read in {readingTime} min., written by **{frontmatter.author}**_
+
+### Import A NPM Module
+
+It throws error `Cannot find module 'Users/...../node_modules/next/link' imported from 'Users/.../.next/server/vendor-chunks/next-mdx-remote-client.js'`
+
+import ImportedLink1 from "next/link";
+
+<ImportedLink1 href={"/articles"}>back to articles</ImportedLink1>
+
+export const ImportedLink2 = (await import("next/link")).default;
+
+<ImportedLink2 href={"/articles"}>back to articles</ImportedLink2>

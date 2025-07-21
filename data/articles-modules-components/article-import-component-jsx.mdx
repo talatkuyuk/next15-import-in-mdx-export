@@ -1,0 +1,22 @@
+---
+title: "Import a component with extension .jsx in MDX"
+author: "ipikuka"
+date: Mar 05, 2025
+isDraft: true
+---
+
+# {frontmatter.title}
+
+<Link href={"/articles-modules-components"}>🔙</Link>
+_Read in {readingTime} min., written by **{frontmatter.author}**_
+
+### Import A Component with `.jsx` extension
+
+It throws error `Unknown file extension ".jsx" for /Users/.../mdxComponents/Bar.jsx`,
+since imported components should be pure javascript not jsx.
+
+The **relative link** is relative to the module which **`MDXRemote`** called.
+
+import Bar from "../../../mdxComponents/Bar.jsx";
+
+<Bar />;

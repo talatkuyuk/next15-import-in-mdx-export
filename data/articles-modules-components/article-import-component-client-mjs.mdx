@@ -1,0 +1,34 @@
+---
+title: "Import a client component with extension .mjs in MDX"
+author: "ipikuka"
+date: Mar 04, 2025
+---
+
+# {frontmatter.title}
+
+<Link href={"/articles-modules-components"}>🔙</Link>
+_Read in {readingTime} min., written by **{frontmatter.author}**_
+
+### 1. Import a Client Component
+
+The **relative link** is relative to the module which **`MDXRemote`** called,
+since the `baseUrl` is setted as `import.meta.url` in the options.
+
+`import ExampleForm from "../../../mdxComponents/ExampleForm.mjs";`
+
+import ExampleForm from "../../../mdxComponents/ExampleForm.mjs";
+
+<ExampleForm />
+
+### 2. Import a Client Component via dynamic import
+
+The **relative link** is relative to the module which **`MDXRemote`** called,
+since the `baseUrl` is setted as `import.meta.url` in the options.
+
+`export const ExampleForm = (await import("../../../mdxComponents/ExampleForm.mjs")).default;`
+
+export const ExampleForm2 = (
+  await import("../../../mdxComponents/ExampleForm.mjs")
+).default;
+
+<ExampleForm2 />

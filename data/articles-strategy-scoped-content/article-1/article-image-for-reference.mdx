@@ -1,0 +1,42 @@
+---
+title: "Image syntax in MDX for reference"
+author: "ipikuka"
+date: Mar 01, 2025
+---
+
+# {frontmatter.title}
+
+<Link href={"/articles-strategy-scoped-content"}>🔙</Link>
+_Read in {readingTime} min., written by **{frontmatter.author}**_
+
+### 1. Image syntax in markdown / mdx (in `public` directory)
+
+Normally, we put the images in **`public`** directory, and use **root-relative links** (`/pathname-to-image`)
+for referring it. Pay attention to that the images should be in the public directory.
+
+| format    | syntax                                        | proof                                                                                   |
+| :-------- | :-------------------------------------------- | --------------------------------------------------------------------------------------- |
+| markdown  | `![alt](/public-image.png)`                   | ![alt](/public-image.png "public image > 60x60")                                        |
+| html      | `<img alt="alt" src="/public-image.png" />`   | <img alt="alt" src="/public-image.png" title="public image > 60x60" />                  |
+| component | `<Image alt="alt" src="/public-image.png" />` | <Image alt="alt" src="/public-image.png" width={60} height={60} title="public image" /> |
+
+### 2. Image syntax in markdown / mdx (in a custom directory)
+
+In order images to be placed alongwith the articles, we should create **a custom middleware** in `Next.js`,
+which is available as of the version `next@15.2.0-canary.41`
+
+Thanks to that `middleware`, the **`data`** directory containing the articles will be accessible for GET requests.
+To verify this, let's display the images from the **`data`** directory.
+
+| format    | syntax                                                                                                        | proof                                                                                                                              |
+| :-------- | :------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| markdown  | `![alt](/data/articles-strategy-scoped-content/article-1/article-assets/article-image.png)`                   | ![alt](/data/articles-strategy-scoped-content/article-1/article-assets/article-image.png ">60x60")                                 |
+| html      | `<img alt="alt" src="/data/articles-strategy-scoped-content/article-1/article-assets/article-image.png" />`   | <img alt="alt" src="/data/articles-strategy-scoped-content/article-1/article-assets/article-image.png" title=">60x60" />           |
+| component | `<Image alt="alt" src="/data/articles-strategy-scoped-content/article-1/article-assets/article-image.png" />` | <Image alt="alt" src="/data/articles-strategy-scoped-content/article-1/article-assets/article-image.png" width={60} height={60} /> |
+
+As you can see, referencing images based on their directory can be a bit challenging.
+If you move the article to another directory, you’ll also need to update the **src** attribute, which can be cumbersome.
+
+That is why we need to use **relative path** instead of **root-relative path** for the assets.
+
+See how we can use **relative paths** starts with **`./`** or **`../`** in the next article.
