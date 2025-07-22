@@ -22,7 +22,6 @@ async function copyExceptDisallowed(srcDir, destDir) {
       const ext = path.extname(entry.name).toLowerCase();
       if (!disallowedExtensions.includes(ext)) {
         await fs.copyFile(srcPath, destPath);
-        console.log(`✅ Copied ${srcPath} → ${destPath}`);
       }
     }
   }
