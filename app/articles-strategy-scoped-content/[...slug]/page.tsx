@@ -7,7 +7,7 @@ import type { Frontmatter } from "@/types";
 import { getRandomInteger } from "@/utils";
 import {
   getMarkdownFromSlug,
-  toSlug,
+  toPathToSlugArray,
   getMarkdownFilesGlob,
 } from "@/utils/file";
 import { components } from "@/mdxComponents";
@@ -16,15 +16,15 @@ import LoadingComponent from "@/components/LoadingComponent";
 import { remarkPlugins, rehypePlugins, recmaPlugins } from "@/utils/plugins";
 
 type Props = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string[] }>;
 };
 
 const directory = "data/articles-strategy-scoped-content";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug: PathToSlugArray } = await params;
 
-  const file = await getMarkdownFromSlug(directory, slug);
+  const file = await getMarkdownFromSlug(directory, PathToSlugArray.join("/"));
 
   if (!file) return {};
 
@@ -39,9 +39,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
  * "MDXRemote" to be rendered
  */
 export default async function Post({ params }: Props) {
-  const { slug } = await params;
+  const { slug: PathToSlugArray } = await params;
 
-  const result = await getMarkdownFromSlug(directory, decodeURIComponent(slug));
+  const result = await getMarkdownFromSlug(
+    directory,
+    PathToSlugArray.join("/")
+  );
 
   if (!result) {
     return <ErrorComponent error="The source could not found !" />;
@@ -79,6 +82,6 @@ export async function generateStaticParams() {
   const files = getMarkdownFilesGlob(directory);
 
   return files.map((filename) => ({
-    slug: toSlug(filename),
+    slug: toPathToSlugArray(filename),
   }));
 }

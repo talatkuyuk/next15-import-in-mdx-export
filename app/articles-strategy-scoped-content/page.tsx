@@ -19,6 +19,9 @@ export default async function Articles() {
     .filter((post): post is Post => post !== undefined)
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
+  const getPostPath = (post: Post) =>
+    typeof post.slug === "string" ? post.slug : post.slug.join("/");
+
   return (
     <div>
       <h1>Articles with Scoped Content Strategy</h1>
@@ -55,9 +58,7 @@ export default async function Articles() {
         {posts.map((post) => (
           <li key={post.title}>
             <strong>
-              <Link href={path + encodeURIComponent(post.slug)}>
-                {post.title}
-              </Link>
+              <Link href={path + getPostPath(post)}>{post.title}</Link>
             </strong>
             <p>
               <span>{String(post.date)}, </span>

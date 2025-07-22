@@ -5,7 +5,7 @@ export type Frontmatter = {
   isDraft?: boolean;
 };
 
-export type Post = Frontmatter & { slug: string };
+export type Post = Frontmatter & { slug: string | string[] };
 
 export type Scope = {
   readingTime: string;

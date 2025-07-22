@@ -24,8 +24,12 @@ export function toFilename(slug: string): MarkdownFilename {
 }
 
 export function toSlug(filename: string): string {
-  // replace the last dot with dash         // Convert to URL-friendly /
-  return filename.replace(/\.(?=[^.]*$)/, "-").replace(path.sep, "/");
+  // replace the last dot with dash
+  return filename.replace(/\.(?=[^.]*$)/, "-");
+}
+
+export function toPathToSlugArray(filename: string): string[] {
+  return toSlug(filename).split(path.sep);
 }
 
 /**
