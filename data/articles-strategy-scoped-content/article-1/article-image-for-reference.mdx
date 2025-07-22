@@ -22,10 +22,10 @@ for referring it. Pay attention to that the images should be in the public direc
 
 ### 2. Image syntax in markdown / mdx (in a custom directory)
 
-In order images to be placed alongwith the articles, we should create **a custom middleware** in `Next.js`,
-which is available as of the version `next@15.2.0-canary.41`
+We should create **a custom script** to copy the blog assets
+which are placed alongside with the articles into output directory during export.
 
-Thanks to that `middleware`, the **`data`** directory containing the articles will be accessible for GET requests.
+Thanks to that `script`, the **`data`** directory containing the blog assets will be accessible.
 To verify this, let's display the images from the **`data`** directory.
 
 | format    | syntax                                                                                                        | proof                                                                                                                              |
