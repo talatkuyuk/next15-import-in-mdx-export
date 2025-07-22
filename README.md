@@ -4,27 +4,23 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 The application is designed for:
 
-1. finding a solution **import static assets with relative path** in MDX for Next.js output export.
+1. finding a solution **import static assets with relative path** in MDX for Next.js static export.
 2. finding a solution **import components/modules/functions** in MDX.
 
 ## Getting Started
 
-First, run the development server and open [http://localhost:3000](http://localhost:3000) with your browser.
+The application is designed **for only static export**, it will not work in development mode since we can not use middlewares during static export.
 
-```bash
-npm run dev
-```
-
-Or, run the production mode and open [http://localhost:3000](http://localhost:3000) with your browser.
+Run the production mode and open [http://localhost:3000](http://localhost:3000) with your browser.
 
 ```bash
 npm run build
 npm run start
 ```
 
-## Import static assets with relative path in MDX when output export
+## Import static assets with relative path in MDX when static export
 
-When output export, static assets which are located in a different directory other than `public` need to be copied to output folder in a structured way in blog articles live.
+During static export, static assets which are located in a different directory other than `public` need to be copied to output folder in a structured way. To do that, **I created a custom copy script** runs after static export.
 
 ### Employ two `recma` plugins
 
