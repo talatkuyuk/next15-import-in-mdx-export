@@ -7,12 +7,8 @@
     "url": "git+https://github.com/talatkuyuk/next15-import-in-mdx-export.git"
   },
   "scripts": {
-    "dev": "next dev",
-    "dev:d": "rm -rf .next && next dev",
-    "build": "next build && node scripts/copy-blog-assets.mjs",
-    "build:d": "rm -rf .next && next build",
-    "start": "next start",
-    "start:export": "npx serve@latest out",
+    "build": "rm -rf out && next build && node scripts/copy-blog-assets.mjs",
+    "start": "npx serve@latest out",
     "lint": "next lint"
   },
   "dependencies": {
