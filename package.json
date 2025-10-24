@@ -1,10 +1,10 @@
 {
-  "name": "next15-import-in-mdx-export",
+  "name": "nextjs-nmrc-import-in-mdx-export",
   "version": "1.0.6",
   "public": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/talatkuyuk/next15-import-in-mdx-export.git"
+    "url": "git+https://github.com/talatkuyuk/nextjs-nmrc-import-in-mdx-export.git"
   },
   "scripts": {
     "build": "rm -rf out && next build && node scripts/copy-blog-assets.mjs",
