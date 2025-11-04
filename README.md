@@ -9,7 +9,7 @@ The application is designed for:
 
 ## Getting Started
 
-The application is designed **for only static export**, it will not work in development mode since we can not use middlewares during static export.
+The application is designed **for only static export**, it will not work in development mode since we can not use `proxy.ts` during static export.
 
 Run the production mode and open [http://localhost:3000](http://localhost:3000) with your browser.
 
