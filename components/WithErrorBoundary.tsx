@@ -2,11 +2,11 @@
 
 import { ErrorBoundary } from "react-error-boundary";
 
-const ErrorFallback = ({ error }: { error: Error }) => (
+const ErrorFallback = ({ error }: { error: unknown }) => (
   <div role="alert">
     <h2>Something went wrong</h2>
     <pre style={{ whiteSpace: "pre-wrap", color: "var(--error)" }}>
-      {error.message}
+      {error instanceof Error ? error.message : String(error)}
     </pre>
   </div>
 );
